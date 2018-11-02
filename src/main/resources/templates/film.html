@@ -1,0 +1,27 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Film</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <a href="https://github.com/vatarasov/demodb">
+        <img id="fork-me" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png">
+    </a>
+    <div class="center">
+        <div class="wall">
+            <div class="title" th:text="${film.name}"/>
+            <div><img th:src="'/film/' + ${film.id} + '/image'" alt="Image not loaded" width="350px" height="500px"></div>
+            <span class="title">Year: </span><span th:text="${film.year}"/><br>
+            <span class="title">Genre: </span><span th:text="${film.genre != null ? film.genre : ''}"/><br>
+            <span class="title">Production company: </span><span th:text="${film.factory != null ? film.factory.name : ''}"/><br>
+            <span class="title">Created by: </span><span th:text="${film.producer != null ? film.producer.name : ''}"/><br>
+            <span class="title">Actors: </span><span th:text="${film.starsToString()}"/><br>
+            <span class="title">Plot: </span>
+            <div class="description" th:text="${film.description}"/>
+        </div>
+    </div>
+</body>
+</html>

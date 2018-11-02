@@ -15,7 +15,7 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-group = 'ru.vtarasov'
+group = 'ru.mgazizova'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
@@ -23,12 +23,15 @@ repositories {
 	mavenCentral()
 }
 
+bootRun {
+	main = 'ru.mgazizova.demodb.DemodbApplication'
+}
 
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
 	implementation('org.springframework.boot:spring-boot-starter-jdbc')
 	implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
 	implementation('org.springframework.boot:spring-boot-starter-web')
-	runtimeOnly('org.postgresql:postgresql')
+	implementation('org.postgresql:postgresql')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
