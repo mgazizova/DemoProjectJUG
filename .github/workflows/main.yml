@@ -27,11 +27,7 @@ jobs:
           
           
       - name: Install project
-        run: |
-          pwd
-          ls -al
-          cd DemoProjectJUG 
-          ./gradlew
+        run: ./gradlew
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
