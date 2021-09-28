@@ -46,7 +46,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: pmd/main.html
-          if: ${{ failure() }}
+          if: always()
           path: build/reports/pmd/main.html
         
       - name: Build JAR  
