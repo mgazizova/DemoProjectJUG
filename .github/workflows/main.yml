@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Demo_JUG_CI
 
 # Controls when the workflow will run
@@ -43,33 +41,23 @@ jobs:
       - name: Build project
         run: ./gradlew build
         
-      - name: Check PMD
-        run: ./gradlew check
-        
       - name: Build JAR  
         run: ./gradlew bootJar
-      
+        
+      # Upload artifacts
       - uses: actions/upload-artifact@v2
         with:
           name: demodb-0.0.1-SNAPSHOT.jar
           path: build/libs/demodb-0.0.1-SNAPSHOT.jar
           
       - uses: actions/upload-artifact@v2
+        if: always()
         with:
-          name: pmd/main.html
-          path: build/reports/pmd/main.html
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: pmd/main.xml
-          path: build/reports/pmd/main.xml   
+          name: main.html
+          path: build/reports/pmd/main.html   
           
       - uses: actions/upload-artifact@v2
+        if: always()
         with:
-          name: pmd/test.html
+          name: test.html
           path: build/reports/pmd/test.html
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: pmd/test.xml
-          path: build/reports/pmd/test.xml

@@ -21,6 +21,7 @@ public class ImageController {
     @GetMapping("film/{id}/image")
     @ResponseBody
     public byte[] image(@PathVariable int id) {
+        int i;
         Film film = filmFinder.load(id);
         return film.getImage();
     }
