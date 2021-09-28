@@ -35,9 +35,6 @@ jobs:
       # Downloads a copy of the code in your repository before running CI tests
       - name: Check out repository code
         uses: actions/checkout@v2
-        
-      - name: Create DB
-        run: postgres createdb demodb-test;
       
       - name: Install project
         run: ./gradlew
