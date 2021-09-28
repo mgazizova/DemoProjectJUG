@@ -26,6 +26,7 @@ jobs:
         # Provide the password for postgres
         env:
           POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: demodb-test
         ports:
           # Maps tcp port 5432 on service container to the host
           - 5432:5432
