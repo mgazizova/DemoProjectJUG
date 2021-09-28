@@ -46,7 +46,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         if: always()
         with:
-          name: pmd/main.html
+          name: main.html
           path: build/reports/pmd/main.html
         
       - name: Build JAR  
@@ -60,17 +60,17 @@ jobs:
 
 
       - uses: actions/upload-artifact@v2
+        if: always()
         with:
-          name: pmd/main.xml
-          if: failure()
+          name: main.xml
           path: build/reports/pmd/main.xml   
           
       - uses: actions/upload-artifact@v2
         with:
-          name: pmd/test.html
+          name: test.html
           path: build/reports/pmd/test.html
 
       - uses: actions/upload-artifact@v2
         with:
-          name: pmd/test.xml
+          name: test.xml
           path: build/reports/pmd/test.xml
