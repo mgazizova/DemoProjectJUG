@@ -36,8 +36,5 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
       
-      - name: Install project
-        run: ./gradlew
-      
-      - name: Unit tests
-        run: ./gradlew bootRun
+      - name: Build project
+        run: ./gradlew build
