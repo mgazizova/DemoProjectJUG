@@ -45,3 +45,8 @@ jobs:
         
       - name: Build JAR  
         run: ./gradlew bootJar
+      
+      - uses: actions/download-artifact@v2
+        with:
+          name: demodb-0.0.1-SNAPSHOT.jar
+          path: build/libs/
