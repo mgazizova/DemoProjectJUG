@@ -27,21 +27,13 @@ jobs:
         env:
           POSTGRES_PASSWORD: postgres
 
-
     steps:
       # Downloads a copy of the code in your repository before running CI tests
       - name: Check out repository code
         uses: actions/checkout@v2
         
       - name: Install project
-        run: ./gradlew  
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+        run: ./gradlew
+      
+      - name: Unit tests
+        run: ./gradlew bootRun
