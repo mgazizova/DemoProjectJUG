@@ -26,6 +26,8 @@ jobs:
         # Provide the password for postgres
         env:
           POSTGRES_PASSWORD: postgres
+        ports:
+          [5432:5432]
 
     steps:
       # Downloads a copy of the code in your repository before running CI tests
