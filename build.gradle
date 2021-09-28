@@ -24,7 +24,7 @@ repositories {
 }
 
 bootJar {
-	main = 'ru.mgazizova.demodb.DemodbApplication'
+	mainClass = 'ru.mgazizova.demodb.DemodbApplication'
 }
 
 dependencies {
