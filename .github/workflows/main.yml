@@ -27,7 +27,6 @@ jobs:
         env:
           POSTGRES_HOST: 127.0.0.1
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: demodb-test
         ports:
           # Maps tcp port 5432 on service container to the host
           - 5432:5432
