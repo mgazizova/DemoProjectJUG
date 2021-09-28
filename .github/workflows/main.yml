@@ -43,12 +43,6 @@ jobs:
       - name: Build project
         run: ./gradlew build
         
-      - uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: main.html
-          path: build/reports/pmd/main.html
-        
       - name: Build JAR  
         run: ./gradlew bootJar
       
@@ -57,7 +51,11 @@ jobs:
           name: demodb-0.0.1-SNAPSHOT.jar
           path: build/libs/demodb-0.0.1-SNAPSHOT.jar
           
-
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: main.html
+          path: build/reports/pmd/main.html   
 
       - uses: actions/upload-artifact@v2
         if: always()
@@ -66,11 +64,13 @@ jobs:
           path: build/reports/pmd/main.xml   
           
       - uses: actions/upload-artifact@v2
+        if: always()
         with:
           name: test.html
           path: build/reports/pmd/test.html
 
       - uses: actions/upload-artifact@v2
+        if: always()
         with:
           name: test.xml
           path: build/reports/pmd/test.xml
