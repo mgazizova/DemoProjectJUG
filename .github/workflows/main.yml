@@ -42,3 +42,6 @@ jobs:
       
       - name: Build project
         run: ./gradlew build
+        
+      - name: Build JAR  
+        run: ./gradlew bootJar
