@@ -43,6 +43,9 @@ jobs:
       - name: Build project
         run: ./gradlew build
         
+      - name: Check PMD
+        run: ./gradlew check
+        
       - name: Build JAR  
         run: ./gradlew bootJar
       
@@ -50,3 +53,23 @@ jobs:
         with:
           name: demodb-0.0.1-SNAPSHOT.jar
           path: build/libs/demodb-0.0.1-SNAPSHOT.jar
+          
+      - uses: actions/upload-artifact@v2
+        with:
+          name: pmd/main.html
+          path: build/reports/pmd/main.html
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: pmd/main.xml
+          path: build/reports/pmd/main.xml   
+          
+      - uses: actions/upload-artifact@v2
+        with:
+          name: pmd/test.html
+          path: build/reports/pmd/test.html
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: pmd/test.xml
+          path: build/reports/pmd/test.xml
