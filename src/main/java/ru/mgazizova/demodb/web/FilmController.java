@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import ru.mgazizova.demodb.datasource.DataSourceFactory;
 import ru.mgazizova.demodb.datasource.FilmFinder;
 import ru.mgazizova.demodb.model.Film;
 
@@ -15,9 +14,6 @@ import ru.mgazizova.demodb.model.Film;
  */
 @Controller
 public class FilmController {
-
-    @Autowired
-    private DataSourceFactory dsf;
 
     @Autowired
     private FilmFinder filmFinder;
