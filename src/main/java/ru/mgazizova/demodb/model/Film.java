@@ -116,11 +116,11 @@ public class Film {
     }
 
     public byte[] getImage() {
-        return image;
+        return image.clone();
     }
 
     public void setImage(byte[] image) {
-        this.image = image;
+        this.image = image.clone();
     }
 
     public String starsToString() {

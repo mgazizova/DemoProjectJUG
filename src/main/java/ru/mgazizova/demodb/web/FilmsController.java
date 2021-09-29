@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.mgazizova.demodb.datasource.DataSourceFactory;
 import ru.mgazizova.demodb.datasource.FilmFinder;
 import ru.mgazizova.demodb.datasource.GenresFinder;
 import ru.mgazizova.demodb.datasource.YearsFinder;
@@ -22,9 +21,6 @@ import ru.mgazizova.demodb.model.Film;
  */
 @Controller
 public class FilmsController {
-
-    @Autowired
-    private DataSourceFactory dsFactory;
 
     @Autowired
     private YearsFinder yearsFinder;
