@@ -1,0 +1,63 @@
+name: Demo_JUG_CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # Label of the container job
+  container-job:
+    # Containers must run in Linux based operating systems
+    runs-on: ubuntu-latest
+    # Docker Hub image that `container-job` executes in
+    container: openjdk:11
+    
+    # Service containers to run with `container-job`
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      # Downloads a copy of the code in your repository before running CI tests
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      
+      - name: Build project
+        run: ./gradlew build
+        
+      - name: Build JAR  
+        run: ./gradlew bootJar
+        
+      # Upload artifacts
+      - uses: actions/upload-artifact@v2
+        with:
+          name: demodb-0.0.1-SNAPSHOT.jar
+          path: build/libs/demodb-0.0.1-SNAPSHOT.jar
+          
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: main.html
+          path: build/reports/pmd/main.html   
+          
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: test.html
+          path: build/reports/pmd/test.html
