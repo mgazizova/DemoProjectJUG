@@ -7,22 +7,33 @@
     <link rel="stylesheet" href="../admin.css">
 </head>
 <body>
-    <a class="add" href="countries/add">Add new</a>
-    <table>
-        <tr>
-            <th>Country</th>
-            <th></th>
-            <th></th>
-        <tr>
-        <tr th:each="country : ${countries}">
-            <td th:text="${country.name}"/>
-            <td class="edit">
-                <a th:href="'countries/' + ${country.id} + '/edit'">&#9998;</a>
-            </td>
-            <td class="delete">
-                <a th:href="'countries/' + ${country.id} + '/delete'">&#10008;</a>
-            </td>
-        <tr>
-    </table>
+<h1 style="text-align: center">List of Countries</h1>
+<br>
+
+<table>
+    <tr>
+        <th>Country</th>
+        <th></th>
+        <th></th>
+    <tr>
+    <tr th:each="country : ${countries}">
+        <td th:text="${country.name}"/>
+        <td class="edit">
+            <a th:href="'countries/' + ${country.id} + '/edit'">&#9998;</a>
+        </td>
+        <td class="delete">
+            <a th:href="'countries/' + ${country.id} + '/delete'">&#10008;</a>
+        </td>
+    <tr>
+</table>
+
+<br>
+
+<div style="text-align: center">
+    <button style="width: 100px;height: 60px" onclick="window.location.href='countries/add';">
+        Add new
+    </button>
+</div>
+
 </body>
 </html>
