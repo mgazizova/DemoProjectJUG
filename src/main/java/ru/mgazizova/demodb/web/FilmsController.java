@@ -1,10 +1,5 @@
 package ru.mgazizova.demodb.web;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,6 +9,12 @@ import ru.mgazizova.demodb.datasource.FilmFinder;
 import ru.mgazizova.demodb.datasource.GenresFinder;
 import ru.mgazizova.demodb.datasource.YearsFinder;
 import ru.mgazizova.demodb.model.Film;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @author vtarasov
@@ -34,6 +35,9 @@ public class FilmsController {
     @GetMapping("/films")
     public String list(@RequestParam(name = "str", required = false) String search, HttpServletRequest request, ModelMap model) throws Exception {
         Map<String, String[]> params = request.getParameterMap();
+
+        if (params.size() == 0)
+            System.out.println("Params is empty");
 
         int[] allYears = yearsFinder.findYears();
 
