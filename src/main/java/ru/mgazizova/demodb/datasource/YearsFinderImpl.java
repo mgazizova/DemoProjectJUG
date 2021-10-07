@@ -17,12 +17,6 @@ public class YearsFinderImpl implements YearsFinder {
     @Autowired
     private DataSourceFactory dsf;
 
-    private boolean isFindYears() throws Exception {
-        if (this.findYears().length == 0)
-            return false;
-        return true;
-    }
-
     @Override
     public int[] findYears() throws Exception {
         try (Connection conn = dsf.get().getConnection();
