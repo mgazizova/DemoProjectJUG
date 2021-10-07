@@ -36,9 +36,6 @@ public class FilmsController {
     public String list(@RequestParam(name = "str", required = false) String search, HttpServletRequest request, ModelMap model) throws Exception {
         Map<String, String[]> params = request.getParameterMap();
 
-        if (params.size() == 0)
-            System.out.println("Params is empty");
-
         int[] allYears = yearsFinder.findYears();
 
         Set<Integer> years = new HashSet<>();
